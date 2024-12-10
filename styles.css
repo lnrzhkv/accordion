@@ -1,0 +1,107 @@
+* {
+  box-sizing: border-box;
+  font-family: "Inter", serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.container {
+  width: 788px;
+  height: fit-content;
+  padding: 50px;
+  margin: 0 auto;
+
+  display: flex;
+  column-gap: 30px;
+}
+
+.accordion-item {
+  flex: 1;
+  position: relative;
+  border-radius: 40px;
+  /* width: 93px; */
+  height: 329px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.accordion-item .title,
+.accordion-item .title-2 {
+  opacity: 0;
+  display: none;
+}
+
+.accordion-item.moved > .title,
+.accordion-item.moved > .title-2 {
+  display: flex;
+  position: absolute;
+  top: 1rem;
+  color: white;
+  animation: showText 1s ease-in-out normal;
+  opacity: 1;
+  scale: 1.2;
+}
+
+.accordion-item.moved > .title-2 {
+  top: 3rem;
+  font-size: 55px;
+}
+
+.accordion-item.moved {
+  flex: 4;
+  cursor: default;
+}
+
+.circle {
+  position: absolute;
+  bottom: 28px;
+  left: 0.9rem;
+  width: 56px;
+  height: 54px;
+  border-radius: 50px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+}
+
+.accordion-item.moved .circle {
+  left: calc(85.42 / 2);
+  animation: rotate 2s infinite ease;
+}
+
+.accordion-item > img {
+  border-radius: 40px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: width, scale 0.5s ease;
+}
+
+@keyframes showText {
+  0% {
+    opacity: 0;
+    scale: 0.8;
+  }
+
+  100% {
+    opacity: 1;
+    scale: 1.2;
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate3d(0, 0, 0, 0deg);
+  }
+
+  100% {
+    transform: rotate3d(1, 1, 1, 360deg);
+  }
+}
